@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/dodolandia-pwa/static/css/main.67ef2ed3.chunk.css",
+    "main.js": "/dodolandia-pwa/static/js/main.ac82ccb8.chunk.js",
+    "main.js.map": "/dodolandia-pwa/static/js/main.ac82ccb8.chunk.js.map",
+    "runtime-main.js": "/dodolandia-pwa/static/js/runtime-main.09cba5dd.js",
+    "runtime-main.js.map": "/dodolandia-pwa/static/js/runtime-main.09cba5dd.js.map",
+    "static/js/2.4bbc6866.chunk.js": "/dodolandia-pwa/static/js/2.4bbc6866.chunk.js",
+    "static/js/2.4bbc6866.chunk.js.map": "/dodolandia-pwa/static/js/2.4bbc6866.chunk.js.map",
+    "index.html": "/dodolandia-pwa/index.html",
+    "precache-manifest.9c2b1e1d9c6ca521d9e27ba04abe45ad.js": "/dodolandia-pwa/precache-manifest.9c2b1e1d9c6ca521d9e27ba04abe45ad.js",
+    "service-worker.js": "/dodolandia-pwa/service-worker.js",
+    "static/css/main.67ef2ed3.chunk.css.map": "/dodolandia-pwa/static/css/main.67ef2ed3.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09cba5dd.js",
+    "static/js/2.4bbc6866.chunk.js",
+    "static/css/main.67ef2ed3.chunk.css",
+    "static/js/main.ac82ccb8.chunk.js"
+  ]
+}
