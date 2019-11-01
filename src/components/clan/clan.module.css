@@ -1,0 +1,12 @@
+.ClanContainer {
+  width: 300px;
+}
+
+
+.MemberList{
+  list-style:none;
+}
+.MemberList, .MemberInfo { /* reset the margin and padding */
+  margin: 0;
+  padding: 0;
+}
