@@ -9,7 +9,7 @@ const Clan = (props) => {
     .map(p => {
       return (
         <li className={css.MemberInfo}>
-          <p>{p.name} - {p.townHallLevel}</p>
+          <p>{p.name} - <b>Th{p.townHallLevel}</b></p>
         </li>
       )
     })
@@ -19,7 +19,9 @@ const Clan = (props) => {
 
   return (
     <div className={css.ClanContainer}>
-      <label>{props.clan.name}</label>
+      <p>{props.clan.name}
+        <b> ({props.clan.members.length})</b>
+      </p>
       <img src={props.clan.badgeUrls.small} alt="clan badge"></img>
       <ul className={css.MemberList}>
         {members(props.clan.members)}
