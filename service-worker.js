@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/dodolandia-pwa/precache-manifest.9c2b1e1d9c6ca521d9e27ba04abe45ad.js"
+  "/dodolandia-pwa/precache-manifest.f3b51bc33476af898b7d462970c420ce.js"
 );
 
 self.addEventListener('message', (event) => {
