@@ -2,3 +2,20 @@
   display: flex;
   flex-direction: row;
 }
+
+.CompareTable {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 1000px;
+}
+
+.CompareTable  > td,
+.CompareTable  > th {
+  border: 1px solid #d0d7f9;
+  text-align: left;
+  padding: 8px;
+}
+
+.CompareTable  > tr:nth-child(even) {
+  background-color: #f8f8fb;
+}
