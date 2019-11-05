@@ -6,9 +6,16 @@
 .CompareTable {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 1000px;
+  width: 1500px;
 }
 
+@media (width > 800px) {
+  .CompareTable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+}
 .CompareTable  > td,
 .CompareTable  > th {
   border: 1px solid #d0d7f9;

@@ -35,8 +35,8 @@ const DODOLANDIA_TAG = 'YQP0P9PP'
   const hasObjectAtIndex = (members, index) => {    
     const sortFirst = members.sort((a, b) => (a.townHallLevel > b.townHallLevel) ? -1 : ((a.townHallLevel < b.townHallLevel) ? 1 : 0))    
     if (sortFirst.length-1 >= index) 
-      return `${sortFirst[index].name} - th${sortFirst[index].townHallLevel}`
-    return 'null' 
+      return  `th${sortFirst[index].townHallLevel} :${sortFirst[index].name}`
+    return ' ' 
   }
 
   const largerMemberList = clans => {
@@ -52,14 +52,15 @@ const DODOLANDIA_TAG = 'YQP0P9PP'
     let rows = []
     rows.push(
       <tr>
-        <th><img src={clans[0].badgeUrls.small} alt="clanBadge" /> {clans[0].name}-{clans[0].members.length}</th>
-        <th><img src={clans[1].badgeUrls.small} alt="clanBadge" /> {clans[1].name}-{clans[1].members.length}</th>
-        <th><img src={clans[2].badgeUrls.small} alt="clanBadge" /> {clans[2].name}-{clans[2].members.length}</th>
-        <th><img src={clans[3].badgeUrls.small} alt="clanBadge" /> {clans[3].name}-{clans[3].members.length}</th>
-        <th><img src={clans[4].badgeUrls.small} alt="clanBadge" /> {clans[4].name}-{clans[4].members.length}</th>
-        <th><img src={clans[5].badgeUrls.small} alt="clanBadge" /> {clans[5].name}-{clans[5].members.length}</th>
-        <th><img src={clans[6].badgeUrls.small} alt="clanBadge" /> {clans[6].name}-{clans[6].members.length}</th>
-        <th><img src={clans[7].badgeUrls.small} alt="clanBadge" /> {clans[7].name}-{clans[7].members.length}</th>
+        <th>#</th>
+        <th><img src={clans[0].badgeUrls.small} alt="clanBadge" /><br></br> {clans[0].name} <br></br> Membri:{clans[0].members.length}</th>
+        <th><img src={clans[1].badgeUrls.small} alt="clanBadge" /><br></br> {clans[1].name} <br></br> Membri:{clans[1].members.length}</th>
+        <th><img src={clans[2].badgeUrls.small} alt="clanBadge" /><br></br> {clans[2].name} <br></br> Membri:{clans[2].members.length}</th>
+        <th><img src={clans[3].badgeUrls.small} alt="clanBadge" /><br></br> {clans[3].name} <br></br> Membri:{clans[3].members.length}</th>
+        <th><img src={clans[4].badgeUrls.small} alt="clanBadge" /><br></br> {clans[4].name} <br></br> Membri:{clans[4].members.length}</th>
+        <th><img src={clans[5].badgeUrls.small} alt="clanBadge" /><br></br> {clans[5].name} <br></br> Membri:{clans[5].members.length}</th>
+        <th><img src={clans[6].badgeUrls.small} alt="clanBadge" /><br></br> {clans[6].name} <br></br> Membri:{clans[6].members.length}</th>
+        <th><img src={clans[7].badgeUrls.small} alt="clanBadge" /><br></br> {clans[7].name} <br></br> Membri:{clans[7].members.length}</th>
       </tr>
     )
 
@@ -67,6 +68,7 @@ const DODOLANDIA_TAG = 'YQP0P9PP'
 
       rows.push(
         <tr>
+          <td>{i+1}</td>
           <td>{hasObjectAtIndex(clans[0].members, i)}</td>
           <td>{hasObjectAtIndex(clans[1].members, i)}</td>
           <td>{hasObjectAtIndex(clans[2].members, i)}</td>
