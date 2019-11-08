@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import CWL from './containers/CWL/CWL'
+import CWL_war from './containers/CWL_war/CWL_war'
 import packageJson from '../package.json';
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
         Made By With ❤️(_d0do_)  ©v{packageJson.version} 
           </p>
       </header>
-      <CWL></CWL>
+      <CWL_war></CWL_war>
+      {/* <CWL></CWL> */}
     </div>
   );
 }
