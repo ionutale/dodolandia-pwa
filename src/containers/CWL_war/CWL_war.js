@@ -5,48 +5,9 @@ import css from './cwl_war.module.css'
 import WarMap from '../../components/warMap/warMap'
 import WarAttackLog from '../../components/warAttackLog/warAttackLog'
 
+
 const CWL_war = () => {
 const DODOLANDIA_TAG = 'YQP0P9PP'
-  // Declare a new state variable, which we'll call "count"
-  const [cwl_war, setCwl_war] = useState({"season": "2019-11"})
- /**
-  * warn: remember to add attack days and war tag to click and select it
-  */
-
-  const sortPlayers = members => members.sort((a, b) => (a.mapPosition < b.mapPosition) ? -1 : ((a.mapPosition < b.mapPosition) ? 1 : 0))
-  const playersTableRows = (clan, opponent) => {
-    let rows = []
-    for (let i = 0; i < 14; i++) {
-      const player = clan[i];
-      const opp = opponent[i];
-      
-      rows.push(
-        <tr>
-          <td>{player.mapPosition} {player.name} - {player.townhallLevel}</td>
-          <td>{opp.mapPosition} {opp.name} - {opp.townhallLevel}</td>
-        </tr>
-      )
-    }
-    return rows
-  }
-
-  const createRows = war => {
-    const clan = sortPlayers(war.clan.members)
-    const opponent = sortPlayers(war.opponent.members)
-    return playersTableRows(clan, opponent)
-  }
-
-  const compareMapPos = () => (
-    <table className={css.CompareTable}>
-        <tr>
-          <th><img src={clanLeagueWar.clan.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWar.clan.name}</p> </th>
-          <th><img src={clanLeagueWar.opponent.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWar.opponent.name}</p> </th>
-        </tr>
-        <tbody>
-          {createRows(clanLeagueWar)}
-        </tbody>
-      </table>
-  )
 
   /**
    * 
