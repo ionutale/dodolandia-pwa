@@ -161,8 +161,8 @@ const DODOLANDIA_TAG = 'YQP0P9PP'
 
   return (
     <div>
-      <WarMap></WarMap>
-      {compareMapPos()}
+      <WarMap clanLeagueWar={clanLeagueWar}></WarMap>
+      {/* {compareMapPos()} */}
       {/* {attacksLog(attackLog(clanLeagueWar), clanLeagueWar.clan)} */}
     </div>
   );

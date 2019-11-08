@@ -1,6 +1,6 @@
 import React from 'react'
 import css from './warMap.module.css'
-const WarMap = () => {
+const WarMap = ({clanLeagueWar}) => {
 
   const sortPlayers = members => members.sort((a, b) => (a.mapPosition < b.mapPosition) ? -1 : ((a.mapPosition < b.mapPosition) ? 1 : 0))
   const playersTableRows = (clan, opponent) => {
@@ -24,6 +24,8 @@ const WarMap = () => {
     const opponent = sortPlayers(war.opponent.members)
     return playersTableRows(clan, opponent)
   }
+
+  if (clanLeagueWar === undefined || clanLeagueWar === null) return null
 
   return (
     <div>
