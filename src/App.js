@@ -13,8 +13,8 @@ function App() {
         Made With ❤️ By (_d0do_)  ©v{packageJson.version} 
           </p>
       </header>
-      <CWL_war></CWL_war>
-      {/* <CWL></CWL> */}
+      {/* <CWL_war></CWL_war> */}
+      <CWL></CWL>
     </div>
   );
 }
