@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         Clan War League
         <p className="Version">
-        Made By With ❤️(_d0do_)  ©v{packageJson.version} 
+        Made With ❤️ By (_d0do_)  ©v{packageJson.version} 
           </p>
       </header>
       <CWL_war></CWL_war>
