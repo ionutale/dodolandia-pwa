@@ -1,20 +1,39 @@
 import React from 'react'
 import css from './warAttackLog.module.css'
-
+import * as warFunctinos from '../../utils/util'
 /**
  * Receive all data from clanLeagueWarTag
  * TODO: maybe not a very good idea to send all data here
  */
 const WarAttackLog = ({clanLeagueWarTag}) => {
+
+  const sortAttacks = (a, b) => (a.order < b.order) ? -1 : ((a.order < b.order) ? 1 : 0)
+
   console.log(clanLeagueWarTag);
-
-
-  const remapAttacks = clanLeagueWarTag => {
-    const clan = extractClanAttacks(clanLeagueWarTag.clan, )
-    clan.members.map(player => {
-      
-    })
-    return clan
+  // create a unique list of payers with clan name and attacks array
+  function remapAttacks() {
+    const players = [
+      ...clanLeagueWarTag.clan.members.map(player => {return {...player, "clan": clanLeagueWarTag.clan.name}}),
+      ...clanLeagueWarTag.opponent.members.map(player => {return {...player, "clan": clanLeagueWarTag.clan.name}})
+    ]
+    console.log(players)
+    // create a unique list of attacks only 
+    const attacks = players
+      .filter(({attacks}) => attacks !== undefined)
+      .map(({attacks}) => { return attacks})
+      .flat()
+      .sort(sortAttacks)
+      .map( attack => {
+        return {
+          ...attack,
+          // may you should not use the name, and use the entire document, 
+          // this way you can insert more info into the list table
+          attackerName: players.find(p => p.tag === attack.attackerTag).name,
+          defenderName: players.find(p => p.tag === attack.defenderTag).name,
+        }
+      })
+    
+    return attacks
   }
   console.log(remapAttacks(clanLeagueWarTag));
   
@@ -29,40 +48,6 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
     "mapPosition": member.mapPosition
   }}
 
-  /**
-   * attackObject
-   */
-
-  const attackObject = (attack, member, deffenders) => {
-    return {
-      // "attacker": warPlayerObj(attack, member),
-      // "defender": warPlayerObj(deffenders, member),
-      "stars": attack.stars,
-      "destructionPercentage": attack.destructionPercentage,
-      "order": attack.order  
-    }
-  }
-
-  /**
-   * this method will extract all the attacks of the attacker clan
-   * you need to also insert the defender so that it can extract the defender player data
-   * like: "name" and  "mapPosition"
-   */
-  const extractClanAttacks = (attackers, deffenders) => {
-    let attackLog = []
-
-    attackers.members.map( member => {
-      if (member.attacks === undefined) return null
-
-      member.attacks.map(attack => {
-        const deffender = deffenders.members.find(p => p.tag === attack.defenderTag)
-        attackLog.push(attackObject(attack, deffender))
-        return null
-      })
-      return null
-    })
-    return attackLog
-  }
 
   /**
    * attackLog array 
@@ -74,7 +59,7 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
     const attackers = clanLeagueWar.clan
     const deffenders = clanLeagueWar.opponent
     
-    attackLog = [...extractClanAttacks(attackers, deffenders), ...extractClanAttacks(deffenders, attackers)]
+    attackLog = [...warFunctinos.extractClanAttacks(attackers, deffenders), ...warFunctinos.extractClanAttacks(deffenders, attackers)]
     attackLog = attackLog.sort((a, b) => (a.order > b.order) ? -1 : ((a.order < b.order) ? 1 : 0))
     console.log(attackLog);
     return attackLog
