@@ -1,6 +1,5 @@
 import React from 'react'
 import css from './warAttackLog.module.css'
-import * as warFunctinos from '../../utils/util'
 /**
  * Receive all data from clanLeagueWarTag
  * TODO: maybe not a very good idea to send all data here
@@ -28,53 +27,48 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
           ...attack,
           // may you should not use the name, and use the entire document, 
           // this way you can insert more info into the list table
-          attackerName: players.find(p => p.tag === attack.attackerTag).name,
-          defenderName: players.find(p => p.tag === attack.defenderTag).name,
+          attackerName: players.find(p => p.tag === attack.attackerTag),
+          defenderName: players.find(p => p.tag === attack.defenderTag),
         }
       })
     
     return attacks
   }
-  console.log(remapAttacks(clanLeagueWarTag));
-  
-/**
- * fighter object 
- */
-  const fighterObject  = (attacker, member) => { return {
-    "clan": attacker.name,
-    "name": member.name,
-    "tag": member.tag,
-    "townhallLevel": member.townhallLevel,
-    "mapPosition": member.mapPosition
-  }}
+  console.log("remapAttacks:", remapAttacks());
 
 
-  /**
-   * attackLog array 
-   * 
-   */
-  const attackLog = clanLeagueWar => {
-    let attackLog = []
-
-    const attackers = clanLeagueWar.clan
-    const deffenders = clanLeagueWar.opponent
-    
-    attackLog = [...warFunctinos.extractClanAttacks(attackers, deffenders), ...warFunctinos.extractClanAttacks(deffenders, attackers)]
-    attackLog = attackLog.sort((a, b) => (a.order > b.order) ? -1 : ((a.order < b.order) ? 1 : 0))
-    console.log(attackLog);
-    return attackLog
-  }
 
   /** 
    * return the start to display 
    * TODO: add also empty stars
    */
-  const stars = number => '⭐'.repeat(number)
+  const stars = number => '⭐'.repeat(number) // + '⭐'.repeat(3-number)
 
   /**
    * return the table rows
-   * but please revise this part. is outrages
+   * but please revise this part. is outrages 
    */
+
+  const playerInfo = (name, townhallLevel, mapPosition, winOrLoose) => {
+    return (
+      <td className={css.Winner}>
+      <p><b>{mapPosition}) th{townhallLevel}</b> {name}</p>
+      </td>
+    )
+  }
+
+  const tableCount = (index) => (<td>{index}</td>)
+
+  const matchInfo = (stars, destructionPercentage, isThisADefence) => {
+    return (
+            <td>
+              {isThisADefence ? '<' : '>'} 
+              <p>
+                {stars(stars)}  {destructionPercentage}%
+              </p>
+            </td>
+    )
+  }
 
   const attacksLog = (attaksList, mainClan) => {
     const rows = attaksList.map(item => {
