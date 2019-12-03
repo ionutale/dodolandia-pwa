@@ -1,17 +1,15 @@
-.App {
-  text-align: center;
-}
 
 .App-header {
   background-color: #282c34;
   min-height: 70px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(5px + 2vmin);
   color: white;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: flex-start; */
 }
 
 .App-link {
@@ -20,5 +18,20 @@
 
 .Version {
   font-size: calc(1px + 1vmin);
+}
 
+.Title {
+  /* set position for parent felxbox */
+  align-self: center;
+  /* flex-basis: auto; */
+  /* set its own flex box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Menu {
+  /* set position for parent felxbox */
+  align-self: center;
 }
