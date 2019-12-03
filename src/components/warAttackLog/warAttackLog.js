@@ -90,7 +90,7 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
       }
 
       return (
-        <tr>
+        <tr key={index}>
           {tableCount(index)}
           {clan1Attack}
           {matchInfo(attack)}
@@ -104,12 +104,14 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
   const attackTable = () => {
     const table = (
       <table className={css.CompareTable}>
-        <tr>
-          <th>#</th>
-          <th><img src={clanLeagueWarTag.clan.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.clan.name}</p> </th>
-          <th>castigator</th>
-          <th><img src={clanLeagueWarTag.opponent.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.opponent.name}</p> </th>
-        </tr>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th><img src={clanLeagueWarTag.clan.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.clan.name}</p> </th>
+            <th>castigator</th>
+            <th><img src={clanLeagueWarTag.opponent.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.opponent.name}</p> </th>
+          </tr>
+        </thead>
         <tbody>
           {attackListTable()}
         </tbody>
