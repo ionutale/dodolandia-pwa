@@ -1,27 +1,15 @@
-import React, { useState } from 'react';
-import * as axios from '../../network/cwl-axios'
-import {clanLeague} from '../../sampleData/clanLeague'
+import React, { useContext } from 'react';
 import Clan from '../../components/clan/clan'
 import css from './cwl.module.css'
+import { CWLContext } from '../../App'
 
-const CWL = () => {
-const DODOLANDIA_TAG = 'YQP0P9PP'
-  // Declare a new state variable, which we'll call "count"
-  const [cwl, setCwl] = useState({"season": "2019-11"})
-  const [clanTag, setClanTag] = useState(DODOLANDIA_TAG)
-  const [loading, setLoading] = useState(false)
+const CWL = (cwl) => {
 
-  console.log(clanLeague);
-  const cwlData = async(e, clanTag = DODOLANDIA_TAG) => {
-    try {
-      setLoading(true)
-      const res = await axios.getClanLeague(clanTag)
-      setCwl(res.data)
-      setLoading(false)
-    } catch (error) {
-      setLoading(false)
-    }    
-  }
+
+  const {state, dispatch} = useContext(CWLContext);
+  const changeInputValue = (newValue) => {
+    dispatch({ type: 'UPDATE_CWL', data: newValue});
+  };
 
   const clansColumns = clans => {
     if (clans)
@@ -84,13 +72,11 @@ const DODOLANDIA_TAG = 'YQP0P9PP'
     return rows
   }
 
-
+  const clans = state.cwl === null ? undefined : state.cwl
   return (
     <div>
-      #<input value={clanTag} />
-      <button onClick={cwlData} disabled={loading}> Cauta </button>
       <table className={css.CompareTable}>
-        {tableRows(cwl.clans)}
+        {tableRows(clans)}
       </table>
     </div>
   );

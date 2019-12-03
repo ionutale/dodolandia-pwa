@@ -8,14 +8,12 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
 
   const sortAttacks = (a, b) => (a.order < b.order) ? -1 : ((a.order < b.order) ? 1 : 0)
 
-  console.log(clanLeagueWarTag);
   // create a unique list of payers with clan name and attacks array
   function remapAttacks(CWLTag) {
     const players = [
       ...CWLTag.clan.members.map(player => {return {...player, "clan": CWLTag.clan.name}}),
       ...CWLTag.opponent.members.map(player => {return {...player, "clan": CWLTag.opponent.name}})
     ]
-    console.log("map and unify:", players)
     // create a unique list of attacks only 
     const attacks = players
       .filter(({attacks}) => attacks !== undefined)
@@ -35,7 +33,6 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
     
     return attacks
   }
-  console.log("remapAttacks:", remapAttacks(clanLeagueWarTag));
 
 
   /** 
@@ -62,18 +59,15 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
   const matchInfo = ({stars, destructionPercentage}) => {
     return (
             <td>
-              <p>
-                {getStarts(stars)}  {destructionPercentage}%
-              </p>
+              <p>{destructionPercentage}%</p>
+              <p>{getStarts(stars)}</p>
             </td>
     )
   }
 
-  const attackListTable = () => {
-    const attacks = remapAttacks(clanLeagueWarTag)
-    const mainClanName = clanLeagueWarTag.clan.name
-
-    console.log(mainClanName, attacks)
+  const attackListTable = (CWLTag) => {
+    const attacks = remapAttacks(CWLTag)
+    const mainClanName = CWLTag.clan.name
 
     let rows = attacks.map( (attack, index) => {
 
@@ -113,7 +107,7 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
           </tr>
         </thead>
         <tbody>
-          {attackListTable()}
+          {attackListTable(clanLeagueWarTag)}
         </tbody>
       </table>
     )

@@ -1,5 +1,6 @@
 import React from 'react'
 import css from './warMap.module.css'
+
 const WarMap = ({clanLeagueWar}) => {
 
   const sortPlayers = members => members.sort((a, b) => (a.mapPosition < b.mapPosition) ? -1 : ((a.mapPosition < b.mapPosition) ? 1 : 0))
@@ -31,8 +32,8 @@ const WarMap = ({clanLeagueWar}) => {
     <div>
       <table className={css.CompareTable}>
         <tr>
-          <th><img src={clanLeagueWar.clan.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWar.clan.name}</p> </th>
-          <th><img src={clanLeagueWar.opponent.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWar.opponent.name}</p> </th>
+          <th><img src={clanLeagueWar.clan.badgeUrls.small} alt={clanLeagueWar.clan.name} /><p>{clanLeagueWar.clan.name}</p> </th>
+          <th><img src={clanLeagueWar.opponent.badgeUrls.small} alt={clanLeagueWar.opponent.name} /><p>{clanLeagueWar.opponent.name}</p> </th>
         </tr>
         <tbody>
           {createRows(clanLeagueWar)}
