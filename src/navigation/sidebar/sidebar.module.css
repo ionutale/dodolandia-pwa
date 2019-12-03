@@ -1,3 +1,29 @@
 .Sidebar {
-  
+  height: 100vh;
+  width: 200px;
+  background-color: beige;
+  /* padding will align the sidebar with the toolbar */
+  padding-top: 1px;
+
+  /* animation */
+  z-index: 200;
+  transition: transform 0.3s ease-out;
+
+}
+
+.LinksList {
+  list-style-type: none;
+}
+
+.LinksList > li > a {
+  text-decoration: none;
+}
+
+
+.Open {
+  transform: translateX(0);
+}
+
+.Close {
+  transform: translateX(-100%);
 }
