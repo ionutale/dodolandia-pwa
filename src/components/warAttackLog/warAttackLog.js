@@ -14,7 +14,6 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
       ...CWLTag.clan.members.map(player => {return {...player, "clan": CWLTag.clan.name}}),
       ...CWLTag.opponent.members.map(player => {return {...player, "clan": CWLTag.opponent.name}})
     ]
-    console.log("map and unify:", players)
     // create a unique list of attacks only 
     const attacks = players
       .filter(({attacks}) => attacks !== undefined)
@@ -69,8 +68,6 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
   const attackListTable = (CWLTag) => {
     const attacks = remapAttacks(CWLTag)
     const mainClanName = CWLTag.clan.name
-
-    console.log(mainClanName, attacks)
 
     let rows = attacks.map( (attack, index) => {
 
