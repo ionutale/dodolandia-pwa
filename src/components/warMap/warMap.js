@@ -31,8 +31,8 @@ const WarMap = ({clanLeagueWar}) => {
     <div>
       <table className={css.CompareTable}>
         <tr>
-          <th><img src={clanLeagueWar.clan.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWar.clan.name}</p> </th>
-          <th><img src={clanLeagueWar.opponent.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWar.opponent.name}</p> </th>
+          <th><img src={clanLeagueWar.clan.badgeUrls.small} alt={clanLeagueWar.clan.name} /><p>{clanLeagueWar.clan.name}</p> </th>
+          <th><img src={clanLeagueWar.opponent.badgeUrls.small} alt={clanLeagueWar.opponent.name} /><p>{clanLeagueWar.opponent.name}</p> </th>
         </tr>
         <tbody>
           {createRows(clanLeagueWar)}

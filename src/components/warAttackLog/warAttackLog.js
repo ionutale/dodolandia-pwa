@@ -8,7 +8,6 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
 
   const sortAttacks = (a, b) => (a.order < b.order) ? -1 : ((a.order < b.order) ? 1 : 0)
 
-  console.log(clanLeagueWarTag);
   // create a unique list of payers with clan name and attacks array
   function remapAttacks(CWLTag) {
     const players = [
@@ -35,7 +34,6 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
     
     return attacks
   }
-  console.log("remapAttacks:", remapAttacks(clanLeagueWarTag));
 
 
   /** 
@@ -62,16 +60,15 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
   const matchInfo = ({stars, destructionPercentage}) => {
     return (
             <td>
-              <p>
-                {getStarts(stars)}  {destructionPercentage}%
-              </p>
+              <p>{destructionPercentage}%</p>
+              <p>{getStarts(stars)}</p>
             </td>
     )
   }
 
-  const attackListTable = () => {
-    const attacks = remapAttacks(clanLeagueWarTag)
-    const mainClanName = clanLeagueWarTag.clan.name
+  const attackListTable = (CWLTag) => {
+    const attacks = remapAttacks(CWLTag)
+    const mainClanName = CWLTag.clan.name
 
     console.log(mainClanName, attacks)
 
@@ -107,13 +104,13 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
         <thead>
           <tr>
             <th>#</th>
-            <th><img src={clanLeagueWarTag.clan.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.clan.name}</p> </th>
+            <th><img src={clanLeagueWarTag.clan.badgeUrls.small} alt={clanLeagueWarTag.clan.name} /><p>{clanLeagueWarTag.clan.name}</p> </th>
             <th>castigator</th>
-            <th><img src={clanLeagueWarTag.opponent.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.opponent.name}</p> </th>
+            <th><img src={clanLeagueWarTag.opponent.badgeUrls.small} alt={clanLeagueWarTag.opponent.name} /><p>{clanLeagueWarTag.opponent.name}</p> </th>
           </tr>
         </thead>
         <tbody>
-          {attackListTable()}
+          {attackListTable(clanLeagueWarTag)}
         </tbody>
       </table>
     )
