@@ -10,18 +10,17 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
 
   console.log(clanLeagueWarTag);
   // create a unique list of payers with clan name and attacks array
-  function remapAttacks() {
+  function remapAttacks(CWLTag) {
     const players = [
-      ...clanLeagueWarTag.clan.members.map(player => {return {...player, "clan": clanLeagueWarTag.clan.name}}),
-      ...clanLeagueWarTag.opponent.members.map(player => {return {...player, "clan": clanLeagueWarTag.clan.name}})
+      ...CWLTag.clan.members.map(player => {return {...player, "clan": CWLTag.clan.name}}),
+      ...CWLTag.opponent.members.map(player => {return {...player, "clan": CWLTag.opponent.name}})
     ]
-    console.log(players)
+    console.log("map and unify:", players)
     // create a unique list of attacks only 
     const attacks = players
       .filter(({attacks}) => attacks !== undefined)
       .map(({attacks}) => { return attacks})
       .flat()
-      .sort(sortAttacks)
       .map( attack => {
         return {
           ...attack,
@@ -31,18 +30,19 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
           defenderName: players.find(p => p.tag === attack.defenderTag),
         }
       })
+      .sort(sortAttacks)
+
     
     return attacks
   }
-  console.log("remapAttacks:", remapAttacks());
-
+  console.log("remapAttacks:", remapAttacks(clanLeagueWarTag));
 
 
   /** 
    * return the start to display 
    * TODO: add also empty stars
    */
-  const stars = number => '⭐'.repeat(number) // + '⭐'.repeat(3-number)
+  const getStarts = number => '⭐'.repeat(number) // + '⭐'.repeat(3-number)
 
   /**
    * return the table rows
@@ -51,70 +51,57 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
 
   const playerInfo = (name, townhallLevel, mapPosition, winOrLoose) => {
     return (
-      <td className={css.Winner}>
-      <p><b>{mapPosition}) th{townhallLevel}</b> {name}</p>
+      <td className={winOrLoose ? css.Winner : css.Looser }>
+        <p><b>{mapPosition}. th{townhallLevel}</b> {name}</p>
       </td>
     )
   }
 
   const tableCount = (index) => (<td>{index}</td>)
 
-  const matchInfo = (stars, destructionPercentage, isThisADefence) => {
+  const matchInfo = ({stars, destructionPercentage}) => {
     return (
             <td>
-              {isThisADefence ? '<' : '>'} 
               <p>
-                {stars(stars)}  {destructionPercentage}%
+                {getStarts(stars)}  {destructionPercentage}%
               </p>
             </td>
     )
   }
 
-  const attacksLog = (attaksList, mainClan) => {
-    const rows = attaksList.map(item => {
-      
-      if (item.attacker.clan === mainClan.name) {
-        return (
-          <tr>
-            <td>
-              {item.order}
-            </td>
-            <td className={css.Winner}>
-            <p><b>{item.attacker.mapPosition}) th{item.attacker.townhallLevel}</b> {item.attacker.name}</p>
-            </td>
-            <td>
-              &gt; 
-              <p>
-                {stars(item.stars)}  {item.destructionPercentage}%
-              </p>
-            </td>
-            <td className={css.Looser}>
-            <p><b>{item.defender.mapPosition}) th{item.defender.townhallLevel}</b> {item.defender.name}</p>
-            </td> 
-          </tr>
-        )
+  const attackListTable = () => {
+    const attacks = remapAttacks(clanLeagueWarTag)
+    const mainClanName = clanLeagueWarTag.clan.name
+
+    console.log(mainClanName, attacks)
+
+    let rows = attacks.map( (attack, index) => {
+
+      // put each player on its own clan row
+
+      let clan1Attack, clan2Attack      
+      if (mainClanName === attack.attackerName.clan ) {
+        clan1Attack = playerInfo(attack.attackerName.name, attack.attackerName.townhallLevel, attack.attackerName.mapPosition, true)
+        clan2Attack = playerInfo(attack.defenderName.name, attack.defenderName.townhallLevel, attack.defenderName.mapPosition, false)
+
+      } else {
+        clan1Attack = playerInfo(attack.defenderName.name, attack.defenderName.townhallLevel, attack.defenderName.mapPosition, false)
+        clan2Attack = playerInfo(attack.attackerName.name, attack.attackerName.townhallLevel, attack.attackerName.mapPosition, true)
       }
-      
+
       return (
-          <tr>
-            <td>
-              {item.order}
-            </td>
-            <td className={css.Looser}>
-              <p><b>{item.defender.mapPosition}) th{item.defender.townhallLevel}</b> {item.defender.name}</p>
-            </td> 
-            <td>
-            &lt; 
-            <p>
-              {stars(item.stars)}  {item.destructionPercentage}%
-            </p>
-            </td>
-            <td className={css.Winner}>
-              <p><b>{item.attacker.mapPosition}) th{item.attacker.townhallLevel}</b> {item.attacker.name}</p>
-            </td> 
-          </tr>
-        )
+        <tr>
+          {tableCount(index)}
+          {clan1Attack}
+          {matchInfo(attack)}
+          {clan2Attack}
+        </tr>
+      )
     })
+    return rows
+  }
+
+  const attackTable = () => {
     const table = (
       <table className={css.CompareTable}>
         <tr>
@@ -124,15 +111,18 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
           <th><img src={clanLeagueWarTag.opponent.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.opponent.name}</p> </th>
         </tr>
         <tbody>
-          {rows}
+          {attackListTable()}
         </tbody>
       </table>
     )
-  return table
-  } 
+    return table
+  }
 
   return (
-    <div>WarAttackLog</div>
+
+    <div>WarAttackLog
+      {attackTable()}
+    </div>
   )
 }
 
