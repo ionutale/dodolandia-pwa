@@ -1,5 +1,6 @@
 import React from 'react'
 import css from './warMap.module.css'
+
 const WarMap = ({clanLeagueWar}) => {
 
   const sortPlayers = members => members.sort((a, b) => (a.mapPosition < b.mapPosition) ? -1 : ((a.mapPosition < b.mapPosition) ? 1 : 0))
