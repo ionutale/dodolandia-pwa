@@ -27,7 +27,9 @@ const CWL = (cwl) => {
     return ' ' 
   }
 
-  const largerMemberList = clans => {
+  const largerMemberList = clans => {    
+    console.log(clans);
+    
     return clans.sort((a, b) => (a.members.length > b.members.length) ? -1 : ((a.members.length < b.members.length) ? 1 : 0))[0].members.length
   }
 
@@ -35,8 +37,7 @@ const CWL = (cwl) => {
     if (clans === undefined) return null
 
     const largestClan = largerMemberList(clans)
-    console.log(largestClan);
-    
+
     let rows = []
     rows.push(
       <tr>
@@ -68,11 +69,10 @@ const CWL = (cwl) => {
         </tr>
       )
     }
-
     return rows
   }
-
-  const clans = state.cwl === null ? undefined : state.cwl
+  
+  const clans = state.cwl === null ? undefined : state.cwl.clans
   return (
     <div>
       <table className={css.CompareTable}>

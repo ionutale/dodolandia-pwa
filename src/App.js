@@ -10,14 +10,14 @@ import HamburgerMenu from 'react-hamburger-menu'
 export const CWLContext = React.createContext('CWL');
 // Set up Initial State
 const initialState = {
-
-  inputText: null,
-
+  cwl: null,
 };
 
 function reducer(state, action) {
+  console.log(action);
+  
   switch (action.type) {
-      case 'UPDATE_INPUT':
+      case 'UPDATE_CWL':
           return {
               cwl: action.data
           };
