@@ -11,7 +11,7 @@ const WarMap = ({clanLeagueWar}) => {
       const opp = opponent[i];
       
       rows.push(
-        <tr>
+        <tr key={i}>
           <td>{player.mapPosition} {player.name} - {player.townhallLevel}</td>
           <td>{opp.mapPosition} {opp.name} - {opp.townhallLevel}</td>
         </tr>
@@ -31,10 +31,12 @@ const WarMap = ({clanLeagueWar}) => {
   return (
     <div>
       <table className={css.CompareTable}>
-        <tr>
-          <th><img src={clanLeagueWar.clan.badgeUrls.small} alt={clanLeagueWar.clan.name} /><p>{clanLeagueWar.clan.name}</p> </th>
-          <th><img src={clanLeagueWar.opponent.badgeUrls.small} alt={clanLeagueWar.opponent.name} /><p>{clanLeagueWar.opponent.name}</p> </th>
-        </tr>
+        <thead>
+          <tr>
+            <th><img src={clanLeagueWar.clan.badgeUrls.small} alt={clanLeagueWar.clan.name} /><p>{clanLeagueWar.clan.name}</p> </th>
+            <th><img src={clanLeagueWar.opponent.badgeUrls.small} alt={clanLeagueWar.opponent.name} /><p>{clanLeagueWar.opponent.name}</p> </th>
+          </tr>
+        </thead>
         <tbody>
           {createRows(clanLeagueWar)}
         </tbody>
