@@ -1,29 +1,3 @@
-
-.CompareTable {
-  font-family: arial, sans-serif;
-}
-
-@media (width > 800px) {
-  .CompareTable {
-    font-family: arial, sans-serif;
-    /* width: 100%; */
-  }
-}
-.CompareTable > tbody > tr > td,
-.CompareTable > tr > th {
-  border: 1px solid #646fa5;
-  text-align: left;
-  padding: 8px;
-}
-
-.CompareTable  > tr:nth-child(even) {
-  background-color: #f8f8fb;
-}
-
-.Winner {
-  color: green;
-}
-
-.Looser {
-  color: red;
+.Loading {
+  margin: auto 50%;
 }
