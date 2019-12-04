@@ -40,7 +40,7 @@ const spinner = () => (<p className={css.Loading}>Loading {tag}</p>)
     if (war === null) return null
     return (<div><WarAttackLog clanLeagueWarTag={infoWar}></WarAttackLog> <WarMap clanLeagueWar={infoWar}></WarMap></div>)
   }
-
+  // for githubpages 
   return (
     <div>
       { loading ? spinner() : info(war)}
@@ -50,4 +50,4 @@ const spinner = () => (<p className={css.Loading}>Loading {tag}</p>)
   );
 }
 
-export default CWL_war
+export default CWL_war 
