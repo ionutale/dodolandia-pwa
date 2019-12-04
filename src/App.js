@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import './App.css';
 import CWL from './containers/CWL/CWL'
-import CWL_war from './containers/CWL_war/CWL_war'
+import CWLWar from './containers/CWL_war/CWL_war'
 import packageJson from '../package.json'
 import Sidebar from './navigation/sidebar/sidebar'
 import { Switch, Route } from 'react-router-dom'
@@ -30,13 +30,8 @@ function reducer(state, action) {
 
 function App() {
   const [open, setOpen] = useState(true);
-  const [sCWL, setSCWL] = useState(0);
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const updateCwl = (sCwl) => {
-    console.log("scwl : ", sCwl)
-    setSCWL(sCwl)
-  }
 
   return (
 
@@ -64,12 +59,20 @@ function App() {
             </p>
           </div>
         </header>
-        <Sidebar open={open} pCwl={updateCwl}></Sidebar>
+        <article className=".Content" >
+          <Sidebar open={open} ></Sidebar>
 
-        <Switch>
-          <Route path="/" component={CWL}></Route>
-          <Route path="/cwl/war/:tag" component={CWL_war}></Route>
-        </Switch>
+          <Switch>
+            <Route exact path="/" component={CWL}></Route>
+            <Route 
+              exact
+              strict
+              sensitive
+              path="/cwl/war/:tag" 
+              component={CWLWar}
+              ></Route>
+          </Switch>
+        </article>
       </CWLContext.Provider>
     </div>
   );
