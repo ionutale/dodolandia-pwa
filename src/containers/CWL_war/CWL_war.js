@@ -38,7 +38,10 @@ const spinner = () => (<p className={css.Loading}>Loading {tag}</p>)
     console.log("info war is:", infoWar, war, loading);
     
     if (war === null) return null
-    return (<div><WarAttackLog clanLeagueWarTag={infoWar}></WarAttackLog> <WarMap clanLeagueWar={infoWar}></WarMap></div>)
+    // war map is not displaying the players chosen for the battle, but instead the entire players that CAN make part of the war
+    // is creating confusion, for now is better to not display it  
+    // return (<div><WarAttackLog clanLeagueWarTag={infoWar}></WarAttackLog> <WarMap clanLeagueWar={infoWar}></WarMap></div>)
+    return (<div><WarAttackLog clanLeagueWarTag={infoWar}></WarAttackLog> </div>)
   }
   // for githubpages 
   return (
