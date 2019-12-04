@@ -1,8 +1,7 @@
-
 .App-header {
   background-color: #282c34;
   min-height: 70px;
-  width: 100%;
+  width: 100vw;
   font-size: calc(5px + 2vmin);
   color: white;
 
@@ -35,3 +34,10 @@
   /* set position for parent felxbox */
   align-self: center;
 }
+
+/* .Content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap
+} */
+
