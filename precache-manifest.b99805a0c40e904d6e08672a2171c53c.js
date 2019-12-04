@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cbb23d1a6c691b8146836301eabaa1fe",
+    "revision": "a6be87d5b33c9237808f3e8eaa63daaf",
     "url": "/dodolandia-pwa/index.html"
   },
   {
-    "revision": "c4b63f37b2af33a3892e",
+    "revision": "85c4f4909e0bec084b2e",
     "url": "/dodolandia-pwa/static/css/main.5f639dbe.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dodolandia-pwa/static/js/2.482b4f09.chunk.js"
   },
   {
-    "revision": "c4b63f37b2af33a3892e",
-    "url": "/dodolandia-pwa/static/js/main.5ec53522.chunk.js"
+    "revision": "85c4f4909e0bec084b2e",
+    "url": "/dodolandia-pwa/static/js/main.995933f9.chunk.js"
   },
   {
     "revision": "64e8dda443394dc5be55",
