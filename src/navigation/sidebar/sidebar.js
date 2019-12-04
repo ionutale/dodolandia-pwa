@@ -1,7 +1,8 @@
 import React, {useState, useContext} from 'react'
 import css from './sidebar.module.css'
-import {Link} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
 import { CWLContext } from '../../App'
+import {Redirect} from 'react-router-dom'
 
 import * as axios from '../../network/cwl-axios'
 
@@ -13,7 +14,7 @@ const Sidebar = ({
 }) => {
 
   const {state, dispatch} = useContext(CWLContext)
-  const [cwl, setCwl] = useState({"season": "2019-11"})
+  const [cwl, setCwl] = useState(null)
   const [clanTag, setClanTag] = useState(DODOLANDIA_TAG)
   const [loading, setLoading] = useState(false)
 
@@ -31,6 +32,35 @@ const Sidebar = ({
     } catch (error) {
       setLoading(false)
     }    
+  } 
+
+  function cwlWarTagLink (tag) { 
+    return '/cwl/war/' + (tag.replace(/#/, ''))
+  }
+
+  const cwlTagsLink = (cwl) => {
+    if (cwl === null) return null
+    const list = cwl.rounds.map( (warTags, index) => {
+      console.log(warTags);
+      
+      return (
+        <li key={index}>
+          <div >
+            <p>round {index}</p>
+            <NavLink to={cwlWarTagLink(warTags.warTags[0])}>{warTags.warTags[0]} </NavLink>
+            <NavLink to={cwlWarTagLink(warTags.warTags[1])}>{warTags.warTags[1]} </NavLink>
+            <NavLink to={cwlWarTagLink(warTags.warTags[2])}>{warTags.warTags[2]} </NavLink>
+            <NavLink to={cwlWarTagLink(warTags.warTags[3])}>{warTags.warTags[3]} </NavLink>
+          </div>
+        </li>
+      )
+    });
+    return list
+  }
+
+  const redirect = () => {
+    if (cwl === null) return <Redirect to="/" ></Redirect>
+    return null
   }
 
   const attachedCSS = [css.Sidebar, open ? css.Open : css.Close].join(' ')
@@ -39,8 +69,8 @@ const Sidebar = ({
       #<input value={clanTag} onChange={onTagChange}/>
       <button onClick={cwlData} disabled={loading}> Cauta </button>
       <ul className={css.LinksList}>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/cwl/war/this-is-a-custom-link-tag'>CWL_WAR_TAG</Link></li>
+      <li><NavLink to='/'>CWL</NavLink></li>
+          {cwlTagsLink(cwl)}
         </ul>
     </div>
   )
@@ -48,4 +78,4 @@ const Sidebar = ({
 }
 
 
-export default Sidebar
+export default withRouter(Sidebar)
