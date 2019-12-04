@@ -66,7 +66,7 @@ const Sidebar = ({
       #<input value={clanTag} onChange={onTagChange}/>
       <button onClick={cwlData} disabled={loading}> Cauta </button>
       <ul className={css.LinksList}>
-      <li><NavLink to='/'>CWL</NavLink></li>
+      <li><NavLink to='/'>Toate Clanurile</NavLink></li>
           {cwlTagsLink(cwl)}
         </ul>
     </div>
