@@ -46,21 +46,16 @@ const Sidebar = ({
       return (
         <li key={index}>
           <div >
-            <p>round {index}</p>
-            <NavLink to={cwlWarTagLink(warTags.warTags[0])}>{warTags.warTags[0]} </NavLink>
-            <NavLink to={cwlWarTagLink(warTags.warTags[1])}>{warTags.warTags[1]} </NavLink>
-            <NavLink to={cwlWarTagLink(warTags.warTags[2])}>{warTags.warTags[2]} </NavLink>
-            <NavLink to={cwlWarTagLink(warTags.warTags[3])}>{warTags.warTags[3]} </NavLink>
+            <p>Runda {index+1}</p>
+            <NavLink to={cwlWarTagLink(warTags.warTags[0])}>Grupul 1 </NavLink>
+            <NavLink to={cwlWarTagLink(warTags.warTags[1])}>Grupul 2 </NavLink>
+            <NavLink to={cwlWarTagLink(warTags.warTags[2])}>Grupul 3 </NavLink>
+            <NavLink to={cwlWarTagLink(warTags.warTags[3])}>Grupul 4 </NavLink>
           </div>
         </li>
       )
     });
     return list
-  }
-
-  const redirect = () => {
-    if (cwl === null) return <Redirect to="/" ></Redirect>
-    return null
   }
 
   const attachedCSS = [css.Sidebar, open ? css.Open : css.Close].join(' ')
