@@ -101,9 +101,19 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
         <thead>
           <tr>
             <th>#</th>
-            <th><img src={clanLeagueWarTag.clan.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.clan.name}</p> </th>
-            <th>castigator</th>
-            <th><img src={clanLeagueWarTag.opponent.badgeUrls.small} alt="clanBadge" /><p>{clanLeagueWarTag.opponent.name}</p> </th>
+            <th>
+              <img src={clanLeagueWarTag.clan.badgeUrls.small} alt="clanBadge" />
+              <p>{clanLeagueWarTag.clan.name}</p> 
+              <p>'⭐'{clanLeagueWarTag.clan.stars}</p>
+              <p>⚔{clanLeagueWarTag.clan.attacks}</p>
+            </th>
+            <th></th>
+            <th>
+              <img src={clanLeagueWarTag.opponent.badgeUrls.small} alt="clanBadge" />
+              <p>{clanLeagueWarTag.opponent.name}</p> 
+              <p>'⭐'{clanLeagueWarTag.opponent.stars}</p>
+              <p>⚔{clanLeagueWarTag.opponent.attacks}</p>
+            </th>
           </tr>
         </thead>
         <tbody>
