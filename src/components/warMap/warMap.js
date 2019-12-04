@@ -6,7 +6,7 @@ const WarMap = ({clanLeagueWar}) => {
   const sortPlayers = members => members.sort((a, b) => (a.mapPosition < b.mapPosition) ? -1 : ((a.mapPosition < b.mapPosition) ? 1 : 0))
   const playersTableRows = (clan, opponent) => {
     let rows = []
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i <= 14; i++) {
       const player = clan[i];
       const opp = opponent[i];
       
