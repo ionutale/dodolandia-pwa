@@ -43,7 +43,6 @@ const spinner = () => (<p className={css.Loading}>Loading {tag}</p>)
 
   return (
     <div>
-      {tag}
       { loading ? spinner() : info(war)}
       {/* {compareMapPos()} */}
       {/* {attacksLog(attackLog(clanLeagueWar), clanLeagueWar.clan)} */}
