@@ -41,8 +41,10 @@ const Sidebar = ({
   const cwlTagsLink = (cwl) => {
     if (cwl === null) return null
     const list = cwl.rounds.map( (warTags, index) => {
-      console.log(warTags);
-      
+      console.log(warTags.warTags);
+      // groups not ready yet, don't display as contain no informatino
+      if (/#0/.test(warTags.warTags[0])) return null
+
       return (
         <li key={index}>
           <div >
