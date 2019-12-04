@@ -1,9 +1,13 @@
 import axios from './axios'
-const WORKTIME_URL = '/api/v2/coc/clanLeagueSync'
+const CWL_API = '/api/v2/coc'
 
 
 export const getClanLeague = (tag) => {
-  return axios.get(`${WORKTIME_URL}/${tag}`)
+  return axios.get(`${CWL_API}/clanLeagueSync/${tag}`)
+}
+
+export const getClanLeagueWar = (tag) => {
+  return axios.get(`${CWL_API}/clanLeagueWarsSync/${tag}`)
 }
 
 
