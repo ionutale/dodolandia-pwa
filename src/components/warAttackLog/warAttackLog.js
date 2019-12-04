@@ -116,7 +116,7 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
 
   return (
 
-    <div>WarAttackLog
+    <div>
       {attackTable()}
     </div>
   )
