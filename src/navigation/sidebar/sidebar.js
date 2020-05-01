@@ -27,7 +27,7 @@ const Sidebar = ({
       setCwl(res.data)
       setLoading(false)
     } catch (error) {
-      addError(error)
+      addError({...error, severity: "error"})
       setLoading(false)
     }    
   } 
