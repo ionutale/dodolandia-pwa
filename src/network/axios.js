@@ -1,7 +1,7 @@
 import axios from 'axios'
 const URL = {
-  dev: 'https://dodolandia.herokuapp.com/',
-  prod: 'https://dodolandia.herokuapp.com/'
+  dev: 'https://dodolandia-service-api.appspot.com/',
+  prod: 'https://dodolandia-service-api.appspot.com/'
 }
 // const token = localStorage.getItem('token')
 // const xUserId = localStorage.getItem('xUserId')
