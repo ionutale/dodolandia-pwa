@@ -1,9 +1,7 @@
-import React, {useState, useContext} from 'react'
+import React, {useState} from 'react'
 import css from './sidebar.module.css'
 import {NavLink, withRouter} from 'react-router-dom'
-import { CWLContext } from '../../App'
-import {Redirect} from 'react-router-dom'
-
+import MainContextApi from '../../context/MainContextApi'
 import * as axios from '../../network/cwl-axios'
 
 
@@ -12,8 +10,8 @@ const DODOLANDIA_TAG = 'YQP0P9PP'
 const Sidebar = ({
   open = true
 }) => {
+  const { addError } = MainContextApi()
 
-  const {state, dispatch} = useContext(CWLContext)
   const [cwl, setCwl] = useState(null)
   const [clanTag, setClanTag] = useState(DODOLANDIA_TAG)
   const [loading, setLoading] = useState(false)
@@ -27,9 +25,9 @@ const Sidebar = ({
       setLoading(true)
       const res = await axios.getClanLeague(clanTag)
       setCwl(res.data)
-      dispatch({ type: 'UPDATE_CWL', data: res.data})
       setLoading(false)
     } catch (error) {
+      addError(error)
       setLoading(false)
     }    
   } 

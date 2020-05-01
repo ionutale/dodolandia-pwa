@@ -1,24 +1,8 @@
 import React, { useContext } from 'react';
 import Clan from '../../components/clan/clan'
 import css from './cwl.module.css'
-import { CWLContext } from '../../App'
 
 const CWL = (cwl) => {
-
-
-  const {state, dispatch} = useContext(CWLContext);
-  const changeInputValue = (newValue) => {
-    dispatch({ type: 'UPDATE_CWL', data: newValue});
-  };
-
-  const clansColumns = clans => {
-    if (clans)
-      return clans.map(clan => {
-        return <Clan clan={clan}></Clan>
-      })
-    return null
-  }
-
 
   const hasObjectAtIndex = (members, index) => {    
     const sortFirst = members.sort((a, b) => (a.townHallLevel > b.townHallLevel) ? -1 : ((a.townHallLevel < b.townHallLevel) ? 1 : 0))    
@@ -70,7 +54,7 @@ const CWL = (cwl) => {
     return rows
   }
   
-  const clans = state.cwl === null ? undefined : state.cwl.clans
+  const clans = undefined // state.cwl === null ? undefined : state.cwl.clans
   return (
     <div>
       <table className={css.CompareTable}>
