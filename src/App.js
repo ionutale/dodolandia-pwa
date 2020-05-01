@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import CWL from './containers/CWL/CWL'
 import CWLWar from './containers/CWL_war/CWL_war'

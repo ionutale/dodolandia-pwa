@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import Clan from '../../components/clan/clan'
+import React from 'react';
+// import Clan from '../../components/clan/clan'
 import css from './cwl.module.css'
 
 const CWL = (cwl) => {

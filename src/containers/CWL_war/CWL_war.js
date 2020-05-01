@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import css from './cwl_war.module.css'
-import WarMap from '../../components/warMap/warMap'
+// import WarMap from '../../components/warMap/warMap'
 import WarAttackLog from '../../components/warAttackLog/warAttackLog'
 import * as axios from '../../network/cwl-axios'
 import { useParams } from 'react-router'

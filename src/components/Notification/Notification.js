@@ -24,7 +24,7 @@ export default function Notification() {
   };
 
   const displayAlert = () => {
-    console.log('display error')
+    console.log('display error', error)
     if (error === null || error === undefined ) return null
     return (
     <Alert onClose={handleSubmit} className={classes.error} severity={error.severity}>

@@ -60,7 +60,7 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
     return (
             <td>
               <p>{destructionPercentage}%</p>
-              <p>{getStarts(stars)}</p>
+              <p> <span role="img" aria-label="stars"> {getStarts(stars)}</span></p>
             </td>
     )
   }
@@ -104,14 +104,14 @@ const WarAttackLog = ({clanLeagueWarTag}) => {
             <th>
               <img src={clanLeagueWarTag.clan.badgeUrls.small} alt="clanBadge" />
               <p>{clanLeagueWarTag.clan.name}</p> 
-              <p>'⭐'{clanLeagueWarTag.clan.stars}</p>
+              <p><span role="img" aria-label="Star">'⭐'</span>{clanLeagueWarTag.clan.stars}</p>
               <p>⚔{clanLeagueWarTag.clan.attacks}</p>
             </th>
             <th></th>
             <th>
               <img src={clanLeagueWarTag.opponent.badgeUrls.small} alt="clanBadge" />
               <p>{clanLeagueWarTag.opponent.name}</p> 
-              <p>'⭐'{clanLeagueWarTag.opponent.stars}</p>
+              <p><span role="img" aria-label="Star">'⭐'</span>{clanLeagueWarTag.opponent.stars}</p>
               <p>⚔{clanLeagueWarTag.opponent.attacks}</p>
             </th>
           </tr>
